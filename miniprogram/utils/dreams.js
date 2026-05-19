@@ -1,29 +1,7 @@
-const STORAGE_KEY = 'floydream-dreams'
-
-function readDreams() {
-  const dreams = wx.getStorageSync(STORAGE_KEY)
-
-  if (!Array.isArray(dreams)) {
-    return []
-  }
-
-  return dreams
-    .filter((dream) => dream && dream.id)
-    .map((dream) => ({
-      ...dream,
-      tags: Array.isArray(dream.tags) ? dream.tags : [],
-      status: dream.status || 'draft',
-    }))
-    .sort((left, right) => (right.updatedAt || 0) - (left.updatedAt || 0))
-}
-
-function writeDreams(dreams) {
-  wx.setStorageSync(STORAGE_KEY, dreams)
-}
+const supabase = require('./supabase')
 
 function createDream(payload) {
   const now = Date.now()
-
   return {
     id: `dream_${now}_${Math.random().toString(36).slice(2, 8)}`,
     title: payload.title || '',
@@ -38,30 +16,53 @@ function createDream(payload) {
   }
 }
 
-function upsertDream(dream) {
-  const dreams = readDreams()
-  const index = dreams.findIndex((item) => item.id === dream.id)
-  const nextDream = {
-    ...dream,
-    updatedAt: Date.now(),
+async function readDreams() {
+  try {
+    return await supabase.fetchAllDreams()
+  } catch (err) {
+    console.warn('Supabase 读取失败，降级到本地:', err.message)
+    return fallbackRead()
   }
-
-  if (index > -1) {
-    dreams[index] = {
-      ...dreams[index],
-      ...nextDream,
-    }
-  } else {
-    dreams.unshift(nextDream)
-  }
-
-  dreams.sort((left, right) => (right.updatedAt || 0) - (left.updatedAt || 0))
-  writeDreams(dreams)
-  return nextDream
 }
 
-function getDreamById(id) {
-  return readDreams().find((dream) => dream.id === id) || null
+async function getDreamById(id) {
+  try {
+    return await supabase.fetchDreamById(id)
+  } catch (err) {
+    console.warn('Supabase 读取详情失败，降级到本地:', err.message)
+    return fallbackRead().find((d) => d.id === id) || null
+  }
+}
+
+async function upsertDream(dream) {
+  dream.updatedAt = Date.now()
+  try {
+    return await supabase.saveDream(dream)
+  } catch (err) {
+    console.warn('Supabase 保存失败，降级到本地:', err.message)
+    return fallbackUpsert(dream)
+  }
+}
+
+// 降级：Supabase 不可用时使用本地存储
+const STORAGE_KEY = 'floydream-dreams-fallback'
+
+function fallbackUpsert(dream) {
+  const dreams = fallbackRead()
+  const idx = dreams.findIndex((d) => d.id === dream.id)
+  if (idx > -1) {
+    dreams[idx] = { ...dreams[idx], ...dream, updatedAt: Date.now() }
+  } else {
+    dreams.unshift(dream)
+  }
+  dreams.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))
+  wx.setStorageSync(STORAGE_KEY, dreams)
+  return dream
+}
+
+function fallbackRead() {
+  const raw = wx.getStorageSync(STORAGE_KEY)
+  return Array.isArray(raw) ? raw : []
 }
 
 function parseTags(input) {
@@ -73,48 +74,28 @@ function parseTags(input) {
 }
 
 function formatDateTime(timestamp) {
-  if (!timestamp) {
-    return ''
-  }
-
+  if (!timestamp) return ''
   const date = new Date(timestamp)
-  const month = `${date.getMonth() + 1}`.padStart(2, '0')
-  const day = `${date.getDate()}`.padStart(2, '0')
-  const hour = `${date.getHours()}`.padStart(2, '0')
-  const minute = `${date.getMinutes()}`.padStart(2, '0')
-
-  return `${month}/${day} ${hour}:${minute}`
+  const m = `${date.getMonth() + 1}`.padStart(2, '0')
+  const d = `${date.getDate()}`.padStart(2, '0')
+  const h = `${date.getHours()}`.padStart(2, '0')
+  const min = `${date.getMinutes()}`.padStart(2, '0')
+  return `${m}/${d} ${h}:${min}`
 }
 
 function formatRelativeDate(timestamp) {
-  if (!timestamp) {
-    return ''
-  }
-
+  if (!timestamp) return ''
   const diff = Date.now() - timestamp
   const hour = 60 * 60 * 1000
   const day = 24 * hour
-
-  if (diff < hour) {
-    return '刚刚记录'
-  }
-
-  if (diff < day) {
-    return `${Math.max(1, Math.floor(diff / hour))} 小时前`
-  }
-
-  if (diff < day * 7) {
-    return `${Math.floor(diff / day)} 天前`
-  }
-
+  if (diff < hour) return '刚刚记录'
+  if (diff < day) return `${Math.max(1, Math.floor(diff / hour))} 小时前`
+  if (diff < day * 7) return `${Math.floor(diff / day)} 天前`
   return formatDateTime(timestamp)
 }
 
 function decorateDream(dream) {
-  if (!dream) {
-    return null
-  }
-
+  if (!dream) return null
   return {
     ...dream,
     createdAtText: formatDateTime(dream.createdAt),
@@ -125,16 +106,11 @@ function decorateDream(dream) {
 
 function getStats(dreams) {
   const total = dreams.length
-  const interpreted = dreams.filter((dream) => dream.analysis).length
-  const streakBase = dreams
-    .map((dream) => new Date(dream.createdAt).toDateString())
-    .filter((value, index, list) => list.indexOf(value) === index)
-
-  return {
-    total,
-    interpreted,
-    streak: streakBase.length,
-  }
+  const interpreted = dreams.filter((d) => d.analysis).length
+  const dates = dreams
+    .map((d) => new Date(d.createdAt).toDateString())
+    .filter((v, i, list) => list.indexOf(v) === i)
+  return { total, interpreted, streak: dates.length }
 }
 
 module.exports = {

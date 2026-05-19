@@ -13,47 +13,36 @@ Page({
   },
 
   onLoad(options) {
-    this.setData({
-      id: options.id || '',
-    })
+    this.setData({ id: options.id || '' })
   },
 
-  onShow() {
-    this.loadDream()
+  async onShow() {
+    await this.loadDream()
   },
 
   onShareAppMessage() {
     const dream = this.data.dream
-
     return {
       title: dream ? `${dream.title || '我的梦境记录'}｜Floydream` : 'Floydream 梦境记录',
       path: `/pages/dream-detail/index?id=${this.data.id}`,
     }
   },
 
-  loadDream() {
-    const dream = decorateDream(getDreamById(this.data.id))
-
-    this.setData({
-      dream,
-    })
+  async loadDream() {
+    const dream = decorateDream(await getDreamById(this.data.id))
+    this.setData({ dream })
   },
 
   async refreshInterpretation() {
     const dream = this.data.dream
 
-    if (!dream || this.data.isRefreshing) {
-      return
-    }
+    if (!dream || this.data.isRefreshing) return
 
     this.setData({ isRefreshing: true })
-    wx.showLoading({
-      title: '重新解读中',
-      mask: true,
-    })
+    wx.showLoading({ title: '重新解读中', mask: true })
 
     const analysis = await interpretDream(dream)
-    upsertDream({
+    await upsertDream({
       ...dream,
       analysis,
       analyzedAt: Date.now(),
@@ -62,7 +51,7 @@ Page({
 
     wx.hideLoading()
     this.setData({ isRefreshing: false })
-    this.loadDream()
+    await this.loadDream()
   },
 
   goCreate() {

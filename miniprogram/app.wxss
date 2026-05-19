@@ -1,11 +1,9 @@
 page {
-  background-color: #f5f4ef;
-  height: 100%;
+  background: linear-gradient(180deg, #0b0920 0%, #1a1640 30%, #231d52 60%, #1a1640 100%);
+  min-height: 100vh;
   font-size: 16px;
   line-height: 1.6;
-  color: #23262b;
-  display: flex;
-  justify-content: center;
+  color: #e0dfff;
   font-family: -apple-system-font, "PingFang SC", "Helvetica Neue", sans-serif;
 }
 
@@ -14,40 +12,114 @@ page > view {
   max-width: 600px;
 }
 
-checkbox,
-radio {
-  margin-right: 5px;
-}
-
 button {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: inherit;
 }
 
 button::after {
-  border: 0;
+  border: none;
 }
 
-form {
-  width: 100%;
+input, textarea {
+  color: #e0dfff;
+  font-family: inherit;
 }
 
-input {
-  width: 100%;
+input::placeholder, textarea::placeholder {
+  color: rgba(200, 195, 230, 0.4);
 }
-.demo-text-3{
-  position: relative;
+
+/* === Design Tokens === */
+
+/* Glass card — frosted translucent surface */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.10);
+  border-radius: 28rpx;
+}
+
+/* Elevated card */
+.elevated-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+}
+
+/* Primary CTA button */
+.btn-primary {
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F1F1F1;
-  color: #353535;
-  font-size: 18px;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(135deg, #7c6ff7 0%, #a78bfa 50%, #c084fc 100%);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  box-shadow: 0 8rpx 28rpx rgba(124, 111, 247, 0.35);
+  transition: all 0.2s ease;
 }
-.demo-text-3:before{
-  content: 'C';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+.btn-primary:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* Ghost / secondary button */
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.15);
+  color: #c4b5fd;
+  font-size: 30rpx;
+  font-weight: 500;
+  letter-spacing: 2rpx;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:active {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Text pill / chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  background: rgba(167, 139, 250, 0.15);
+  color: #c4b5fd;
+  border: 1rpx solid rgba(167, 139, 250, 0.2);
+}
+
+.chip-active {
+  background: linear-gradient(135deg, #7c6ff7, #a78bfa);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* Section title */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #c4b5fd;
+  letter-spacing: 1rpx;
 }

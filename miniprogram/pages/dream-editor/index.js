@@ -38,42 +38,24 @@ Page({
 
   handleInput(event) {
     const { field } = event.currentTarget.dataset
-    this.setData({
-      [field]: event.detail.value,
-    })
+    this.setData({ [field]: event.detail.value })
   },
 
   selectMood(event) {
-    this.setData({
-      mood: event.currentTarget.dataset.mood,
-    })
+    this.setData({ mood: event.currentTarget.dataset.mood })
   },
 
   toggleInterpretation(event) {
-    this.setData({
-      needInterpretation: event.detail.value,
-    })
+    this.setData({ needInterpretation: event.detail.value })
   },
 
   async submitDream() {
-    const {
-      title,
-      content,
-      mood,
-      tagsInput,
-      needInterpretation,
-      isSubmitting,
-    } = this.data
+    const { title, content, mood, tagsInput, needInterpretation, isSubmitting } = this.data
 
-    if (isSubmitting) {
-      return
-    }
+    if (isSubmitting) return
 
     if (!content.trim()) {
-      wx.showToast({
-        title: '先写下一段梦境内容',
-        icon: 'none',
-      })
+      wx.showToast({ title: '先写下一段梦境内容', icon: 'none' })
       return
     }
 
@@ -87,17 +69,14 @@ Page({
       status: needInterpretation ? 'analyzing' : 'draft',
     })
 
-    dream = upsertDream(dream)
+    dream = await upsertDream(dream)
 
     try {
       if (needInterpretation) {
-        wx.showLoading({
-          title: '正在解读梦境',
-          mask: true,
-        })
+        wx.showLoading({ title: '正在解读梦境', mask: true })
 
         const analysis = await interpretDream(dream)
-        dream = upsertDream({
+        dream = await upsertDream({
           ...dream,
           analysis,
           analyzedAt: Date.now(),
@@ -111,14 +90,8 @@ Page({
       })
     } catch (error) {
       wx.hideLoading()
-      upsertDream({
-        ...dream,
-        status: 'draft',
-      })
-      wx.showToast({
-        title: '保存成功，解读稍后再试',
-        icon: 'none',
-      })
+      await upsertDream({ ...dream, status: 'draft' })
+      wx.showToast({ title: '保存成功，解读稍后再试', icon: 'none' })
       wx.redirectTo({
         url: `/pages/dream-detail/index?id=${dream.id}`,
       })

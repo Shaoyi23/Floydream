@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "梦境详情"
+  "navigationBarTitleText": "梦境详情",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3730a0"
 }

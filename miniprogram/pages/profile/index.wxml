@@ -1,41 +1,57 @@
-<view class="profile-page">
-  <view class="profile-card">
-    <view class="profile-title">我的梦境档案</view>
-    <view class="profile-desc">先把梦记下来，后面我们再继续把它做成更完整的长期记录产品。</view>
+<view class="profile">
+  <!-- Header -->
+  <view class="profile-hero">
+    <view class="profile-glow"></view>
+    <view class="avatar">✨</view>
+    <view class="profile-name">我的梦境档案</view>
+    <view class="profile-desc">每一次记录，都是在和自己的潜意识对话。</view>
   </view>
 
-  <view class="profile-stats">
-    <view class="stat-item">
-      <view class="stat-value">{{stats.total}}</view>
+  <!-- Stats -->
+  <view class="stats-row">
+    <view class="stat-item glass-card">
+      <view class="stat-num">{{stats.total}}</view>
       <view class="stat-label">累计记录</view>
     </view>
-    <view class="stat-item">
-      <view class="stat-value">{{stats.interpreted}}</view>
+    <view class="stat-item glass-card">
+      <view class="stat-num">{{stats.interpreted}}</view>
       <view class="stat-label">完成解读</view>
     </view>
-    <view class="stat-item">
-      <view class="stat-value">{{stats.streak}}</view>
+    <view class="stat-item glass-card">
+      <view class="stat-num">{{stats.streak}}</view>
       <view class="stat-label">记录天数</view>
     </view>
   </view>
 
-  <view class="panel">
+  <!-- Latest -->
+  <view class="panel elevated-card">
     <view class="panel-title">最近一次记录</view>
     <view wx:if="{{latestDream}}" class="latest-row" bindtap="goLatestDream">
       <view class="latest-main">
         <view class="latest-title">{{latestDream.title || '未命名的梦'}}</view>
         <view class="latest-meta">{{latestDream.createdAtText}} · {{latestDream.mood}}</view>
       </view>
-      <view class="arrow">查看</view>
+      <view class="latest-arrow">→</view>
     </view>
-    <view wx:else class="empty-text">还没有记录内容。</view>
+    <view wx:else class="panel-empty">还没有记录过梦境</view>
   </view>
 
-  <view class="panel">
-    <view class="panel-title">下一步建议</view>
-    <view class="tip-item">连续记录 7 天后，可以开始看重复出现的人、地点和情绪。</view>
-    <view class="tip-item">后续可以继续加上账号同步、AI 对话追问和梦境标签统计。</view>
+  <!-- Tips -->
+  <view class="panel elevated-card">
+    <view class="panel-title">记录贴士</view>
+    <view class="tip-item">
+      <view class="tip-num">01</view>
+      <view class="tip-text">连续记录 7 天，你会开始看到重复出现的人、地点和情绪模式。</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-num">02</view>
+      <view class="tip-text">醒来后先别动，闭眼回想 30 秒——这是捕捉梦境的最佳时机。</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-num">03</view>
+      <view class="tip-text">不必追求完整叙事。一个颜色、一种触感、一句话，都是有效的碎片。</view>
+    </view>
   </view>
 
-  <button class="create-btn" bindtap="goCreate">写一条新的梦境</button>
+  <button class="btn-primary" bindtap="goCreate">✦ 写一条新的梦境</button>
 </view>

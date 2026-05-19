@@ -6,16 +6,12 @@ const {
 
 Page({
   data: {
-    stats: {
-      total: 0,
-      interpreted: 0,
-      streak: 0,
-    },
+    stats: { total: 0, interpreted: 0, streak: 0 },
     latestDream: null,
   },
 
-  onShow() {
-    const dreams = readDreams().map(decorateDream)
+  async onShow() {
+    const dreams = (await readDreams()).map(decorateDream)
 
     this.setData({
       stats: getStats(dreams),
@@ -30,9 +26,7 @@ Page({
   },
 
   goLatestDream() {
-    if (!this.data.latestDream) {
-      return
-    }
+    if (!this.data.latestDream) return
 
     wx.navigateTo({
       url: `/pages/dream-detail/index?id=${this.data.latestDream.id}`,

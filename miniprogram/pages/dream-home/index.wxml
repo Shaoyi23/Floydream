@@ -1,74 +1,86 @@
-<view class="dream-home">
-  <view class="hero-card">
-    <view class="hero-title">把昨夜的梦留在这里</view>
-    <view class="hero-desc">先记下来，再慢慢看清它在说什么。</view>
+<view class="home">
+  <!-- Hero -->
+  <view class="hero">
+    <view class="hero-glow"></view>
+    <view class="hero-moon">🌙</view>
+    <view class="hero-title">Floydream</view>
+    <view class="hero-sub">把昨夜的梦，轻轻放在这里</view>
+    <view class="hero-desc">梦是潜意识的信使。先记下来，再慢慢听懂它在说什么。</view>
     <view class="hero-actions">
-      <button class="primary-btn" bindtap="goCreate">记录新的梦</button>
-      <button class="ghost-btn" bindtap="fillSampleDream">试试示例梦境</button>
+      <button class="btn-primary" bindtap="goCreate">✦ 记录新的梦</button>
     </view>
   </view>
 
-  <view class="stats-grid">
-    <view class="stat-card">
-      <view class="stat-value">{{stats.total}}</view>
+  <!-- Stats -->
+  <view class="stats-row">
+    <view class="stat-card glass-card">
+      <view class="stat-num">{{stats.total}}</view>
       <view class="stat-label">总记录</view>
     </view>
-    <view class="stat-card">
-      <view class="stat-value">{{stats.interpreted}}</view>
+    <view class="stat-card glass-card">
+      <view class="stat-num">{{stats.interpreted}}</view>
       <view class="stat-label">已解读</view>
     </view>
-    <view class="stat-card">
-      <view class="stat-value">{{stats.streak}}</view>
+    <view class="stat-card glass-card">
+      <view class="stat-num">{{stats.streak}}</view>
       <view class="stat-label">有梦天数</view>
     </view>
   </view>
 
-  <view wx:if="{{latestDream}}" class="section">
-    <view class="section-head">
-      <view class="section-title">最近一条</view>
-      <view class="section-subtitle">{{latestDream.relativeText}}</view>
+  <!-- Latest dream -->
+  <view wx:if="{{latestDream}}" class="latest-section">
+    <view class="section-header">
+      <text class="section-label">最近一场梦</text>
+      <text class="section-sub">{{latestDream.relativeText}}</text>
     </view>
-    <view class="latest-card" bindtap="goDetail" data-id="{{latestDream.id}}">
-      <view class="latest-top">
-        <view class="dream-title">{{latestDream.title || '未命名的梦'}}</view>
-        <view class="mood-pill">{{latestDream.mood}}</view>
+    <view class="latest-card elevated-card" bindtap="goDetail" data-id="{{latestDream.id}}">
+      <view class="latest-head">
+        <view class="latest-title">{{latestDream.title || '未命名的梦'}}</view>
+        <view class="chip">{{latestDream.mood}}</view>
       </view>
-      <view class="dream-preview">{{latestDream.preview}}</view>
-      <view wx:if="{{latestDream.analysis}}" class="analysis-preview">{{latestDream.analysis.summary}}</view>
-      <view wx:else class="analysis-empty">这条记录还没有生成解读。</view>
+      <view class="latest-preview">{{latestDream.preview}}</view>
+      <view wx:if="{{latestDream.analysis}}" class="latest-insight">
+        <view class="insight-icon">🔮</view>
+        <view class="insight-text">{{latestDream.analysis.summary}}</view>
+      </view>
+      <view wx:else class="latest-no-insight">
+        <view class="insight-icon">💤</view>
+        <view class="insight-text dim">等待解读中…</view>
+      </view>
     </view>
   </view>
 
-  <view class="section">
-    <view class="section-head">
-      <view class="section-title">最近梦境</view>
-      <view class="section-subtitle">按时间倒序展示</view>
+  <!-- Recent list -->
+  <view class="recent-section">
+    <view class="section-header">
+      <text class="section-label">最近梦境</text>
     </view>
 
-    <view wx:if="{{recentDreams.length}}" class="dream-list">
+    <view wx:if="{{recentDreams.length}}">
       <view
         wx:for="{{recentDreams}}"
         wx:key="id"
-        class="dream-item"
+        class="dream-item elevated-card"
         bindtap="goDetail"
         data-id="{{item.id}}"
       >
-        <view class="dream-item-top">
-          <view class="dream-item-title">{{item.title || '未命名的梦'}}</view>
-          <view class="dream-item-date">{{item.createdAtText}}</view>
+        <view class="item-top">
+          <view class="item-title">{{item.title || '未命名的梦'}}</view>
+          <view class="item-date">{{item.createdAtText}}</view>
         </view>
-        <view class="dream-item-preview">{{item.preview}}</view>
-        <view class="dream-item-foot">
-          <view class="dream-item-mood">{{item.mood}}</view>
-          <view class="dream-item-state">{{item.analysis ? '已生成解读' : '仅记录内容'}}</view>
+        <view class="item-body">{{item.preview}}</view>
+        <view class="item-foot">
+          <view class="chip">{{item.mood}}</view>
+          <view class="item-status">{{item.analysis ? '🔮 已解读' : '💤 仅记录'}}</view>
         </view>
       </view>
     </view>
 
-    <view wx:else class="empty-card">
-      <view class="empty-title">你的梦境档案还没有开始。</view>
-      <view class="empty-desc">先记下一段片段也可以，不需要完整、通顺。</view>
-      <button class="primary-btn" bindtap="goCreate">写下第一条梦境</button>
+    <view wx:else class="empty-card elevated-card">
+      <view class="empty-icon">🌌</view>
+      <view class="empty-title">你的梦境档案还没有开始</view>
+      <view class="empty-desc">哪怕只记住一个片段、一种颜色或一句话，都值得留下。</view>
+      <button class="btn-primary" bindtap="goCreate">写下第一条梦境</button>
     </view>
   </view>
 </view>

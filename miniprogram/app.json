@@ -6,24 +6,24 @@
     "pages/dream-detail/index"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "Floydream",
-    "navigationBarBackgroundColor": "#F5F4EF",
-    "backgroundColor": "#F5F4EF"
+    "navigationBarBackgroundColor": "#3730a0",
+    "backgroundColor": "#3730a0"
   },
   "tabBar": {
-    "color": "#8A8F99",
-    "selectedColor": "#2F343B",
-    "borderStyle": "black",
-    "backgroundColor": "#FAFAF8",
+    "color": "#7870a8",
+    "selectedColor": "#c4b5fd",
+    "borderStyle": "white",
+    "backgroundColor": "#161040",
     "list": [
       {
         "pagePath": "pages/dream-home/index",
-        "text": "首页"
+        "text": "🌙 首页"
       },
       {
         "pagePath": "pages/profile/index",
-        "text": "个人中心"
+        "text": "✨ 我的"
       }
     ]
   },
@@ -33,7 +33,6 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "workers": "workers",
   "debug": false,
   "style": "v2",
   "permission": {

@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "Floydream"
+  "navigationBarTitleText": "Floydream",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3730a0"
 }

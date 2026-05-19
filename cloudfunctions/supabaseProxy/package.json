@@ -1,0 +1,9 @@
+{
+  "name": "supabaseProxy",
+  "version": "1.0.0",
+  "description": "Supabase proxy cloud function",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

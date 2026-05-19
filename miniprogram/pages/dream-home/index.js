@@ -8,15 +8,11 @@ Page({
   data: {
     latestDream: null,
     recentDreams: [],
-    stats: {
-      total: 0,
-      interpreted: 0,
-      streak: 0,
-    },
+    stats: { total: 0, interpreted: 0, streak: 0 },
   },
 
-  onShow() {
-    this.loadDreams()
+  async onShow() {
+    await this.loadDreams()
   },
 
   onShareAppMessage() {
@@ -26,8 +22,8 @@ Page({
     }
   },
 
-  loadDreams() {
-    const dreams = readDreams().map(decorateDream)
+  async loadDreams() {
+    const dreams = (await readDreams()).map(decorateDream)
 
     this.setData({
       latestDream: dreams[0] || null,
@@ -44,15 +40,8 @@ Page({
 
   goDetail(event) {
     const { id } = event.currentTarget.dataset
-
     wx.navigateTo({
       url: `/pages/dream-detail/index?id=${id}`,
-    })
-  },
-
-  fillSampleDream() {
-    wx.navigateTo({
-      url: '/pages/dream-editor/index?mode=sample',
     })
   },
 })
