@@ -1,0 +1,111 @@
+.editor-page {
+  min-height: 100%;
+  padding: 24rpx 24rpx 40rpx;
+  box-sizing: border-box;
+  background: #f5f4ef;
+}
+
+.editor-card {
+  padding: 30rpx 28rpx;
+  border-radius: 20rpx;
+  background: #ffffff;
+  border: 1rpx solid #ebe8df;
+  box-shadow: none;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #23262b;
+}
+
+.page-desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #6f747c;
+}
+
+.field {
+  margin-top: 28rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #23262b;
+}
+
+.text-input,
+.textarea {
+  width: 100%;
+  margin-top: 16rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  background: #f8f7f2;
+  border: 1rpx solid #e6e2d8;
+  color: #2f343b;
+  font-size: 28rpx;
+}
+
+.text-input {
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.textarea {
+  min-height: 320rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.mood-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+  margin-right: -14rpx;
+}
+
+.mood-chip {
+  margin-right: 14rpx;
+  margin-bottom: 14rpx;
+  padding: 14rpx 24rpx;
+  border-radius: 999rpx;
+  background: #f1efe8;
+  color: #5f656d;
+  font-size: 26rpx;
+}
+
+.mood-chip-active {
+  background: #2f343b;
+  color: #ffffff;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  background: #f8f7f2;
+  border: 1rpx solid #ebe8df;
+}
+
+.switch-desc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #838891;
+}
+
+.submit-btn {
+  margin-top: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 14rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  background: #2f343b;
+}

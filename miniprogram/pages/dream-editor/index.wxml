@@ -1,0 +1,65 @@
+<view class="editor-page">
+  <view class="editor-card">
+    <view class="page-title">梦里发生了什么？</view>
+    <view class="page-desc">不用追求完整，哪怕只记住一个房间、一句对白或一个奇怪的动作，都值得留下来。</view>
+
+    <view class="field">
+      <view class="label">梦境标题</view>
+      <input
+        class="text-input"
+        placeholder="比如：一直上不去的电梯"
+        value="{{title}}"
+        data-field="title"
+        bindinput="handleInput"
+      />
+    </view>
+
+    <view class="field">
+      <view class="label">醒来时的情绪</view>
+      <view class="mood-row">
+        <view
+          wx:for="{{moods}}"
+          wx:key="*this"
+          class="mood-chip {{mood === item ? 'mood-chip-active' : ''}}"
+          data-mood="{{item}}"
+          bindtap="selectMood"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="label">梦境内容</view>
+      <textarea
+        class="textarea"
+        maxlength="-1"
+        placeholder="把还记得的片段都写下来，例如场景、人物、重复出现的细节、身体感受。"
+        value="{{content}}"
+        data-field="content"
+        bindinput="handleInput"
+      />
+    </view>
+
+    <view class="field">
+      <view class="label">关键词标签</view>
+      <input
+        class="text-input"
+        placeholder="用空格或逗号分隔，例如：海水 追逐 旧房子"
+        value="{{tagsInput}}"
+        data-field="tagsInput"
+        bindinput="handleInput"
+      />
+    </view>
+
+    <view class="switch-row">
+      <view>
+        <view class="label">生成 AI 解读</view>
+        <view class="switch-desc">会优先调用云函数，失败时自动回退到本地解析。</view>
+      </view>
+      <switch color="#2F343B" checked="{{needInterpretation}}" bindchange="toggleInterpretation" />
+    </view>
+
+    <button class="submit-btn" loading="{{isSubmitting}}" bindtap="submitDream">保存这场梦</button>
+  </view>
+</view>

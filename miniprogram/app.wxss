@@ -1,0 +1,53 @@
+page {
+  background-color: #f5f4ef;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #23262b;
+  display: flex;
+  justify-content: center;
+  font-family: -apple-system-font, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+page > view {
+  width: 100vw;
+  max-width: 600px;
+}
+
+checkbox,
+radio {
+  margin-right: 5px;
+}
+
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0;
+}
+
+button::after {
+  border: 0;
+}
+
+form {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+.demo-text-3{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F1F1;
+  color: #353535;
+  font-size: 18px;
+}
+.demo-text-3:before{
+  content: 'C';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

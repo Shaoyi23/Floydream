@@ -1,0 +1,41 @@
+<view class="profile-page">
+  <view class="profile-card">
+    <view class="profile-title">我的梦境档案</view>
+    <view class="profile-desc">先把梦记下来，后面我们再继续把它做成更完整的长期记录产品。</view>
+  </view>
+
+  <view class="profile-stats">
+    <view class="stat-item">
+      <view class="stat-value">{{stats.total}}</view>
+      <view class="stat-label">累计记录</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{stats.interpreted}}</view>
+      <view class="stat-label">完成解读</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{stats.streak}}</view>
+      <view class="stat-label">记录天数</view>
+    </view>
+  </view>
+
+  <view class="panel">
+    <view class="panel-title">最近一次记录</view>
+    <view wx:if="{{latestDream}}" class="latest-row" bindtap="goLatestDream">
+      <view class="latest-main">
+        <view class="latest-title">{{latestDream.title || '未命名的梦'}}</view>
+        <view class="latest-meta">{{latestDream.createdAtText}} · {{latestDream.mood}}</view>
+      </view>
+      <view class="arrow">查看</view>
+    </view>
+    <view wx:else class="empty-text">还没有记录内容。</view>
+  </view>
+
+  <view class="panel">
+    <view class="panel-title">下一步建议</view>
+    <view class="tip-item">连续记录 7 天后，可以开始看重复出现的人、地点和情绪。</view>
+    <view class="tip-item">后续可以继续加上账号同步、AI 对话追问和梦境标签统计。</view>
+  </view>
+
+  <button class="create-btn" bindtap="goCreate">写一条新的梦境</button>
+</view>

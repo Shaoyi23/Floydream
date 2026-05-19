@@ -1,0 +1,116 @@
+.detail-page {
+  min-height: 100%;
+  padding: 28rpx 24rpx 48rpx;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top center, #dfe0ff 0%, rgba(223, 224, 255, 0) 32%),
+    linear-gradient(180deg, #f7f6ff 0%, #fff7f8 52%, #eef8ff 100%);
+}
+
+.dream-card,
+.analysis-card,
+.missing-card {
+  padding: 30rpx 28rpx;
+  border-radius: 30rpx;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18rpx 42rpx rgba(76, 67, 111, 0.1);
+}
+
+.analysis-card {
+  margin-top: 20rpx;
+}
+
+.meta-row,
+.section-top,
+.tag-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meta-row,
+.section-top {
+  justify-content: space-between;
+}
+
+.mood-badge,
+.analysis-state,
+.tag-chip {
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: #f2ecff;
+  color: #6658a5;
+  font-size: 22rpx;
+}
+
+.date-text {
+  font-size: 22rpx;
+  color: #7e7897;
+}
+
+.dream-title {
+  margin-top: 18rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #221d3f;
+}
+
+.dream-content,
+.block-text,
+.symbol-meaning {
+  margin-top: 18rpx;
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #555871;
+  white-space: pre-wrap;
+}
+
+.tag-row {
+  margin-right: -12rpx;
+  margin-top: 22rpx;
+}
+
+.tag-chip {
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.section-title,
+.block-title,
+.symbol-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #251f45;
+}
+
+.analysis-block {
+  margin-top: 24rpx;
+}
+
+.symbol-item {
+  margin-top: 16rpx;
+  padding: 20rpx;
+  border-radius: 24rpx;
+  background: #f8f7ff;
+}
+
+.secondary-btn,
+.primary-btn {
+  margin-top: 28rpx;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+}
+
+.secondary-btn {
+  color: #5c4fa1;
+  background: #f0e9ff;
+}
+
+.primary-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #6b63ff 0%, #ff8ca4 100%);
+}
+
+.missing-card {
+  margin-top: 60rpx;
+}

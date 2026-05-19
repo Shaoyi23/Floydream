@@ -1,0 +1,88 @@
+.profile-page {
+  min-height: 100%;
+  padding: 24rpx 24rpx 40rpx;
+  box-sizing: border-box;
+  background: #f5f4ef;
+}
+
+.profile-card,
+.profile-stats,
+.panel {
+  background: #ffffff;
+  border: 1rpx solid #ebe8df;
+  border-radius: 20rpx;
+}
+
+.profile-card,
+.panel {
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.profile-title,
+.panel-title,
+.latest-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #23262b;
+}
+
+.profile-desc,
+.tip-item,
+.empty-text,
+.latest-meta {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #6f747c;
+}
+
+.profile-stats {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 26rpx 0;
+  text-align: center;
+}
+
+.stat-item + .stat-item {
+  border-left: 1rpx solid #f0ede5;
+}
+
+.stat-value {
+  font-size: 38rpx;
+  font-weight: 600;
+  color: #23262b;
+}
+
+.stat-label {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #8d9299;
+}
+
+.latest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.latest-main {
+  flex: 1;
+}
+
+.arrow {
+  font-size: 24rpx;
+  color: #90959d;
+}
+
+.create-btn {
+  margin-top: 12rpx;
+  border-radius: 14rpx;
+  background: #2f343b;
+  color: #ffffff;
+  font-size: 30rpx;
+}

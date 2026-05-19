@@ -1,0 +1,61 @@
+<view class="detail-page">
+  <view wx:if="{{dream}}" class="detail-wrap">
+    <view class="dream-card">
+      <view class="meta-row">
+        <view class="mood-badge">{{dream.mood}}</view>
+        <view class="date-text">{{dream.createdAtText}}</view>
+      </view>
+      <view class="dream-title">{{dream.title || '未命名的梦'}}</view>
+      <view class="dream-content">{{dream.content}}</view>
+      <view wx:if="{{dream.tags.length}}" class="tag-row">
+        <view wx:for="{{dream.tags}}" wx:key="*this" class="tag-chip">#{{item}}</view>
+      </view>
+    </view>
+
+    <view class="analysis-card">
+      <view class="section-top">
+        <view class="section-title">AI 解读</view>
+        <view wx:if="{{dream.analysis}}" class="analysis-state">已生成</view>
+      </view>
+
+      <view wx:if="{{dream.analysis}}">
+        <view class="analysis-block">
+          <view class="block-title">整体感受</view>
+          <view class="block-text">{{dream.analysis.summary}}</view>
+        </view>
+
+        <view class="analysis-block">
+          <view class="block-title">关键意象</view>
+          <view wx:for="{{dream.analysis.symbols}}" wx:key="name" class="symbol-item">
+            <view class="symbol-name">{{item.name}}</view>
+            <view class="symbol-meaning">{{item.meaning}}</view>
+          </view>
+        </view>
+
+        <view class="analysis-block">
+          <view class="block-title">可能映射</view>
+          <view class="block-text">{{dream.analysis.insight}}</view>
+        </view>
+
+        <view class="analysis-block">
+          <view class="block-title">记录建议</view>
+          <view class="block-text">{{dream.analysis.suggestion}}</view>
+        </view>
+      </view>
+
+      <view wx:else class="analysis-empty">
+        <view class="block-text">这条梦境目前还没有解析内容，你可以现在补一次解读。</view>
+      </view>
+
+      <button class="secondary-btn" loading="{{isRefreshing}}" bindtap="refreshInterpretation">重新解读</button>
+    </view>
+
+    <button class="primary-btn" bindtap="goCreate">再记一条梦</button>
+  </view>
+
+  <view wx:else class="missing-card">
+    <view class="section-title">没有找到这条梦境</view>
+    <view class="block-text">可能是本地记录已经被清理，或者当前链接里的 id 不存在。</view>
+    <button class="primary-btn" bindtap="goCreate">去写新的梦</button>
+  </view>
+</view>

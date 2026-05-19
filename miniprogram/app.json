@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/dream-home/index",
+    "pages/profile/index",
+    "pages/dream-editor/index",
+    "pages/dream-detail/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Floydream",
+    "navigationBarBackgroundColor": "#F5F4EF",
+    "backgroundColor": "#F5F4EF"
+  },
+  "tabBar": {
+    "color": "#8A8F99",
+    "selectedColor": "#2F343B",
+    "borderStyle": "black",
+    "backgroundColor": "#FAFAF8",
+    "list": [
+      {
+        "pagePath": "pages/dream-home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "workers": "workers",
+  "debug": false,
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于未来扩展地理位置相关的梦境记录能力"
+    }
+  },
+  "cloud": true,
+  "sitemapLocation": "sitemap.json",
+  "resizable": true,
+  "lazyCodeLoading": "requiredComponents"
+}

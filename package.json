@@ -1,0 +1,12 @@
+{
+  "name": "floydream",
+  "version": "1.0.0",
+  "description": "Dream journal WeChat mini program MVP",
+  "scripts": {
+    "lint": "echo \"No lint configured\""
+  },
+  "author": "Shaoyi23",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {}
+}
