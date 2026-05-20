@@ -53,5 +53,17 @@
     </view>
   </view>
 
+  <view class="panel elevated-card">
+    <view class="panel-title">服务说明</view>
+    <view class="service-row" bindtap="goPrivacy">
+      <view class="service-main">
+        <view class="service-title">隐私说明</view>
+        <view class="service-desc">查看梦境记录、AI 解读与云端存储的数据使用方式</view>
+      </view>
+      <view class="latest-arrow">→</view>
+    </view>
+    <view class="service-note">AI 解读仅供参考，不构成医疗、心理诊断或专业建议。</view>
+  </view>
+
   <button class="btn-primary" bindtap="goCreate">✦ 写一条新的梦境</button>
 </view>

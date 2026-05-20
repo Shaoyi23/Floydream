@@ -152,3 +152,37 @@
   line-height: 1.7;
   color: #8b83b8;
 }
+
+.service-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service-main {
+  flex: 1;
+}
+
+.service-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #e0dfff;
+}
+
+.service-desc {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: #8b83b8;
+}
+
+.service-note {
+  margin-top: 20rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 18rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1rpx solid rgba(255, 255, 255, 0.09);
+  font-size: 22rpx;
+  line-height: 1.7;
+  color: #b9b1d7;
+}

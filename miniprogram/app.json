@@ -3,7 +3,8 @@
     "pages/dream-home/index",
     "pages/profile/index",
     "pages/dream-editor/index",
-    "pages/dream-detail/index"
+    "pages/dream-detail/index",
+    "pages/privacy/index"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -35,11 +36,6 @@
   },
   "debug": false,
   "style": "v2",
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于未来扩展地理位置相关的梦境记录能力"
-    }
-  },
   "cloud": true,
   "sitemapLocation": "sitemap.json",
   "resizable": true,

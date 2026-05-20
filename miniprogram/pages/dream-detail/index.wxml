@@ -50,6 +50,11 @@
         <view class="block-text dim">这条梦境还未生成解读，点击下方按钮获取 AI 分析。</view>
       </view>
 
+      <view class="analysis-disclaimer">
+        <view class="disclaimer-title">提示</view>
+        <view class="disclaimer-text">AI 解读仅供记录与自我观察参考，不构成医疗、心理诊断或其他专业建议。</view>
+      </view>
+
       <button class="btn-ghost refresh-btn" loading="{{isRefreshing}}" bindtap="refreshInterpretation">
         {{isRefreshing ? '解读中…' : '🔄 重新解读'}}
       </button>

@@ -32,4 +32,10 @@ Page({
       url: `/pages/dream-detail/index?id=${this.data.latestDream.id}`,
     })
   },
+
+  goPrivacy() {
+    wx.navigateTo({
+      url: '/pages/privacy/index',
+    })
+  },
 })
