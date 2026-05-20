@@ -37,8 +37,6 @@ function buildLocalInterpretation(dream) {
   }
 }
 
-const config = require('../config')
-
 function interpretDream(dream) {
   if (!wx.cloud || !wx.cloud.callFunction) {
     return Promise.resolve(buildLocalInterpretation(dream))
@@ -52,7 +50,6 @@ function interpretDream(dream) {
         content: dream.content,
         mood: dream.mood,
         tags: dream.tags,
-        deepseekApiKey: config.deepseek.apiKey,
       },
     })
     .then((res) => {

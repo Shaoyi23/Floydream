@@ -8,14 +8,14 @@
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "Floydream",
-    "navigationBarBackgroundColor": "#3730a0",
-    "backgroundColor": "#3730a0"
+    "navigationBarBackgroundColor": "#4d466c",
+    "backgroundColor": "#4d466c"
   },
   "tabBar": {
-    "color": "#7870a8",
-    "selectedColor": "#c4b5fd",
+    "color": "#b3acd2",
+    "selectedColor": "#f5eeff",
     "borderStyle": "white",
-    "backgroundColor": "#161040",
+    "backgroundColor": "#2a2346",
     "list": [
       {
         "pagePath": "pages/dream-home/index",

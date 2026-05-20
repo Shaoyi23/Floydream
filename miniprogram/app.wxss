@@ -1,9 +1,12 @@
 page {
-  background: linear-gradient(180deg, #0b0920 0%, #1a1640 30%, #231d52 60%, #1a1640 100%);
+  background:
+    radial-gradient(circle at top, rgba(255, 214, 236, 0.12) 0%, rgba(255, 214, 236, 0) 34%),
+    linear-gradient(180deg, #18142f 0%, #262042 24%, #302953 62%, #2a2348 100%);
+  background-color: #241d42;
   min-height: 100vh;
   font-size: 16px;
   line-height: 1.6;
-  color: #e0dfff;
+  color: #f4efff;
   font-family: -apple-system-font, "PingFang SC", "Helvetica Neue", sans-serif;
 }
 
@@ -36,17 +39,18 @@ input::placeholder, textarea::placeholder {
 
 /* Glass card — frosted translucent surface */
 .glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1rpx solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
   border-radius: 28rpx;
+  box-shadow: 0 16rpx 44rpx rgba(14, 10, 34, 0.12);
 }
 
 /* Elevated card */
 .elevated-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.07));
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
   border-radius: 24rpx;
-  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+  box-shadow: 0 18rpx 56rpx rgba(10, 7, 25, 0.22);
 }
 
 /* Primary CTA button */
@@ -56,12 +60,12 @@ input::placeholder, textarea::placeholder {
   justify-content: center;
   height: 96rpx;
   border-radius: 48rpx;
-  background: linear-gradient(135deg, #7c6ff7 0%, #a78bfa 50%, #c084fc 100%);
+  background: linear-gradient(135deg, #7d6df6 0%, #a996ff 52%, #f0a7cc 100%);
   color: #ffffff;
   font-size: 30rpx;
   font-weight: 600;
   letter-spacing: 2rpx;
-  box-shadow: 0 8rpx 28rpx rgba(124, 111, 247, 0.35);
+  box-shadow: 0 12rpx 30rpx rgba(125, 109, 246, 0.28);
   transition: all 0.2s ease;
 }
 
@@ -77,9 +81,9 @@ input::placeholder, textarea::placeholder {
   justify-content: center;
   height: 96rpx;
   border-radius: 48rpx;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1rpx solid rgba(255, 255, 255, 0.15);
-  color: #c4b5fd;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1rpx solid rgba(255, 255, 255, 0.18);
+  color: #e5dcff;
   font-size: 30rpx;
   font-weight: 500;
   letter-spacing: 2rpx;
@@ -97,9 +101,9 @@ input::placeholder, textarea::placeholder {
   padding: 8rpx 20rpx;
   border-radius: 999rpx;
   font-size: 22rpx;
-  background: rgba(167, 139, 250, 0.15);
-  color: #c4b5fd;
-  border: 1rpx solid rgba(167, 139, 250, 0.2);
+  background: rgba(201, 189, 255, 0.13);
+  color: #eee6ff;
+  border: 1rpx solid rgba(201, 189, 255, 0.18);
 }
 
 .chip-active {
@@ -120,6 +124,6 @@ input::placeholder, textarea::placeholder {
 .section-label {
   font-size: 28rpx;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #ece3ff;
   letter-spacing: 1rpx;
 }

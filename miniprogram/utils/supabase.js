@@ -24,7 +24,6 @@ function callCloud(action, data) {
       action,
       data,
       supabaseHostname: getHostname(),
-      supabaseServiceRoleKey: config.supabase.serviceRoleKey || '',
     },
   })
 }
@@ -71,13 +70,14 @@ async function saveDream(dream) {
     analysis: dream.analysis,
     status: dream.status,
     created_at: dream.createdAt ? new Date(dream.createdAt).toISOString() : new Date().toISOString(),
+    updated_at: dream.updatedAt ? new Date(dream.updatedAt).toISOString() : new Date().toISOString(),
     analyzed_at: dream.analyzedAt ? new Date(dream.analyzedAt).toISOString() : null,
   }
   const res = await callCloud('save', { dream: row })
   if (!res.result || !res.result.ok) {
     throw new Error(res.result?.error || '云函数调用失败')
   }
-  return rowToDream(res.result.data)
+  return rowToDream(res.result.data || row)
 }
 
 async function deleteDreamById(id) {

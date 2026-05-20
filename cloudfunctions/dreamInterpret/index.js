@@ -27,10 +27,14 @@ const SYSTEM_PROMPT = `你是一位资深的梦境分析师，融合荣格心理
 
 function buildPrompt(dream) {
   const parts = []
-  if (dream.title) parts.push(`标题：${dream.title}`)
+  const title = (dream.title || '').slice(0, 80)
+  const content = (dream.content || '').slice(0, 1200)
+  const tags = Array.isArray(dream.tags) ? dream.tags.slice(0, 8) : []
+
+  if (title) parts.push(`标题：${title}`)
   if (dream.mood) parts.push(`醒来情绪：${dream.mood}`)
-  if (dream.content) parts.push(`梦境内容：${dream.content}`)
-  if (dream.tags && dream.tags.length) parts.push(`关键词：${dream.tags.join('、')}`)
+  if (content) parts.push(`梦境内容：${content}`)
+  if (tags.length) parts.push(`关键词：${tags.join('、')}`)
   return parts.join('\n\n')
 }
 
@@ -84,7 +88,7 @@ function httpPost(body, apiKey) {
         { role: 'user', content: buildPrompt(body) },
       ],
       temperature: 0.7,
-      max_tokens: 1200,
+      max_tokens: 700,
     })
 
     const req = https.request(
@@ -134,7 +138,7 @@ exports.main = async (event) => {
     tags: Array.isArray(event.tags) ? event.tags : [],
   }
 
-  const apiKey = process.env.DEEPSEEK_API_KEY || event.deepseekApiKey || ''
+  const apiKey = process.env.DEEPSEEK_API_KEY || ''
 
   if (!apiKey) {
     console.warn('[dreamInterpret] 未配置 API Key，使用本地解析')

@@ -1,11 +1,15 @@
 .editor {
   min-height: 100vh;
-  padding: 24rpx 28rpx 60rpx;
+  padding: 28rpx 28rpx 96rpx;
   box-sizing: border-box;
+  background:
+    radial-gradient(circle at top, rgba(255, 214, 236, 0.08) 0%, rgba(255, 214, 236, 0) 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
 .editor-card {
-  padding: 36rpx 32rpx;
+  padding: 40rpx 32rpx 32rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.08));
 }
 
 /* === Header === */
@@ -22,7 +26,7 @@
 .editor-title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff8ff;
   letter-spacing: 2rpx;
 }
 
@@ -30,7 +34,7 @@
   margin-top: 12rpx;
   font-size: 24rpx;
   line-height: 1.7;
-  color: #8b83b8;
+  color: #cbc1e8;
 }
 
 /* === Fields === */
@@ -41,7 +45,7 @@
 .field-label {
   font-size: 26rpx;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #eee5ff;
   margin-bottom: 12rpx;
   letter-spacing: 1rpx;
 }
@@ -52,15 +56,15 @@
   padding: 0 24rpx;
   box-sizing: border-box;
   border-radius: 18rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1rpx solid rgba(255, 255, 255, 0.1);
-  color: #e0dfff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
+  color: #f3eeff;
   font-size: 28rpx;
 }
 
 .field-input:focus {
-  border-color: rgba(167, 139, 250, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(169, 150, 255, 0.45);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .field-textarea {
@@ -69,16 +73,16 @@
   padding: 22rpx 24rpx;
   box-sizing: border-box;
   border-radius: 18rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1rpx solid rgba(255, 255, 255, 0.1);
-  color: #e0dfff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
+  color: #f3eeff;
   font-size: 28rpx;
   line-height: 1.8;
 }
 
 .field-textarea:focus {
-  border-color: rgba(167, 139, 250, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(169, 150, 255, 0.45);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* === Mood grid === */
@@ -94,9 +98,9 @@
   gap: 6rpx;
   padding: 16rpx 24rpx;
   border-radius: 999rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1rpx solid rgba(255, 255, 255, 0.08);
-  color: #9088b8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.11);
+  color: #d0c5ef;
   font-size: 26rpx;
   transition: all 0.2s ease;
 }
@@ -107,11 +111,11 @@
 }
 
 .mood-active {
-  background: linear-gradient(135deg, rgba(124, 111, 247, 0.3), rgba(167, 139, 250, 0.2));
-  border-color: rgba(167, 139, 250, 0.5);
+  background: linear-gradient(135deg, rgba(125, 109, 246, 0.4), rgba(240, 167, 204, 0.18));
+  border-color: rgba(214, 194, 255, 0.5);
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 4rpx 16rpx rgba(124, 111, 247, 0.2);
+  box-shadow: 0 8rpx 18rpx rgba(125, 109, 246, 0.18);
 }
 
 /* === Switch === */
@@ -121,8 +125,8 @@
   justify-content: space-between;
   padding: 24rpx;
   border-radius: 18rpx;
-  background: rgba(167, 139, 250, 0.06);
-  border: 1rpx solid rgba(167, 139, 250, 0.1);
+  background: linear-gradient(135deg, rgba(169, 150, 255, 0.1), rgba(240, 167, 204, 0.08));
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
   margin-bottom: 32rpx;
 }
 
@@ -133,11 +137,27 @@
 .switch-desc {
   margin-top: 6rpx;
   font-size: 22rpx;
-  color: #6b6488;
+  color: #c5bbdf;
   line-height: 1.5;
 }
 
 /* === Submit === */
+.submit-panel {
+  margin-top: 8rpx;
+  padding: 18rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+}
+
 .submit-btn {
   width: 100%;
+}
+
+.submit-hint {
+  margin-top: 16rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #d0c5eb;
+  letter-spacing: 1rpx;
 }

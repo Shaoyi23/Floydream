@@ -71,8 +71,11 @@
       <switch color="#a78bfa" checked="{{needInterpretation}}" bindchange="toggleInterpretation" />
     </view>
 
-    <button class="btn-primary submit-btn" loading="{{isSubmitting}}" bindtap="submitDream">
-      {{isSubmitting ? '正在保存…' : '保存这场梦'}}
-    </button>
+    <view class="submit-panel">
+      <button class="btn-primary submit-btn" loading="{{isSubmitting}}" bindtap="submitDream">
+        {{isSubmitting ? '正在保存…' : '保存这场梦'}}
+      </button>
+      <view class="submit-hint">先把梦留住，解读可以慢一点到来。</view>
+    </view>
   </view>
 </view>
