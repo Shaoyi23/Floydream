@@ -6,7 +6,7 @@ const {
 
 Page({
   data: {
-    stats: { total: 0, interpreted: 0, streak: 0 },
+    stats: { total: 0, tagged: 0, streak: 0 },
     latestDream: null,
   },
 

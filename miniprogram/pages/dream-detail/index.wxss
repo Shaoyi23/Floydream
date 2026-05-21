@@ -1,10 +1,37 @@
 .detail {
   min-height: 100vh;
-  padding: 24rpx 28rpx 60rpx;
+  padding: 28rpx 28rpx 72rpx;
   box-sizing: border-box;
 }
 
-/* === Dream Card === */
+.loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70rpx 36rpx;
+  text-align: center;
+  margin-top: 24rpx;
+}
+
+.loading-icon {
+  font-size: 84rpx;
+  margin-bottom: 20rpx;
+  animation: bob 1.8s ease-in-out infinite;
+}
+
+.loading-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #4c5675;
+}
+
+.loading-text {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  line-height: 1.7;
+  color: #8086a2;
+}
+
 .dream-card {
   padding: 32rpx;
   margin-bottom: 20rpx;
@@ -18,14 +45,14 @@
 
 .dream-date {
   font-size: 22rpx;
-  color: #6b6488;
+  color: #9a95aa;
 }
 
 .dream-title {
   margin-top: 20rpx;
   font-size: 40rpx;
   font-weight: 700;
-  color: #ffffff;
+  color: #45506f;
   line-height: 1.3;
   letter-spacing: 1rpx;
 }
@@ -34,7 +61,7 @@
   margin-top: 20rpx;
   font-size: 28rpx;
   line-height: 2;
-  color: #b8b0d8;
+  color: #6e7393;
   white-space: pre-wrap;
 }
 
@@ -45,138 +72,68 @@
   margin-top: 24rpx;
 }
 
-/* === Analysis Card === */
-.analysis-card {
+.memory-card {
   padding: 32rpx;
   margin-bottom: 28rpx;
 }
 
-.analysis-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24rpx;
+.memory-head {
+  margin-bottom: 22rpx;
 }
 
-.analysis-title {
+.memory-title {
   font-size: 28rpx;
   font-weight: 600;
-  color: #e0dfff;
+  color: #44506e;
   letter-spacing: 1rpx;
 }
 
-.analysis-badge {
-  padding: 6rpx 16rpx;
-  border-radius: 999rpx;
-  font-size: 20rpx;
-  color: #6ee7b7;
-  background: rgba(110, 231, 183, 0.1);
-  border: 1rpx solid rgba(110, 231, 183, 0.2);
-}
-
-/* === Analysis blocks === */
-.analysis-block {
-  margin-bottom: 24rpx;
-}
-
-.analysis-block:last-child {
-  margin-bottom: 0;
-}
-
-.block-label {
-  font-size: 24rpx;
-  font-weight: 600;
-  color: #a78bfa;
-  margin-bottom: 10rpx;
-  letter-spacing: 1rpx;
-}
-
-.block-text {
-  font-size: 26rpx;
-  line-height: 1.8;
-  color: #b8b0d8;
-}
-
-.block-text.dim {
-  color: #6b6488;
-}
-
-.block-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #e0dfff;
-  margin-bottom: 12rpx;
-}
-
-/* Symbol items */
-.symbol-item {
-  padding: 18rpx 20rpx;
-  border-radius: 16rpx;
-  background: rgba(167, 139, 250, 0.06);
-  border: 1rpx solid rgba(167, 139, 250, 0.08);
-  margin-bottom: 12rpx;
-}
-
-.symbol-item:last-child {
-  margin-bottom: 0;
-}
-
-.symbol-name {
-  font-size: 26rpx;
-  font-weight: 600;
-  color: #c4b5fd;
-  margin-bottom: 6rpx;
-}
-
-.symbol-desc {
-  font-size: 24rpx;
-  line-height: 1.7;
-  color: #8b83b8;
-}
-
-/* Empty analysis */
-.analysis-empty {
+.memory-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 28rpx 0;
-  text-align: center;
+  gap: 16rpx;
 }
 
-.analysis-disclaimer {
-  margin-top: 24rpx;
-  padding: 18rpx 20rpx;
-  border-radius: 18rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1rpx solid rgba(255, 255, 255, 0.08);
+.memory-item {
+  flex: 1;
+  padding: 22rpx 20rpx;
+  border-radius: 20rpx;
+  background: rgba(255, 246, 235, 0.92);
+  border: 1rpx solid rgba(255, 227, 202, 0.88);
 }
 
-.disclaimer-title {
+.memory-label {
   font-size: 22rpx;
-  font-weight: 600;
-  color: #f1c7d9;
+  color: #8d94a9;
   margin-bottom: 8rpx;
-  letter-spacing: 1rpx;
 }
 
-.disclaimer-text {
-  font-size: 22rpx;
+.memory-value {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #4d5c76;
+}
+
+.memory-note {
+  margin-top: 18rpx;
+  padding: 20rpx 22rpx;
+  border-radius: 20rpx;
+  background: rgba(194, 244, 231, 0.34);
+  border: 1rpx solid rgba(194, 228, 220, 0.9);
+}
+
+.memory-note-title {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #3a7f78;
+  margin-bottom: 8rpx;
+}
+
+.memory-note-text {
+  font-size: 24rpx;
   line-height: 1.7;
-  color: #cfc6e9;
+  color: #67818d;
 }
 
-.empty-icon {
-  font-size: 56rpx;
-  margin-bottom: 16rpx;
-}
-
-/* Refresh button */
-.refresh-btn {
-  width: 100%;
-  margin-top: 24rpx;
-}
-
-/* Not found */
 .missing-card {
   display: flex;
   flex-direction: column;
@@ -191,8 +148,35 @@
   margin-bottom: 24rpx;
 }
 
+.block-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #4d5776;
+  margin-bottom: 12rpx;
+}
+
+.block-text {
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #727694;
+}
+
+.block-text.dim {
+  color: #8e91a9;
+}
+
 .missing-card .btn-primary {
   width: 100%;
   max-width: 360rpx;
   margin-top: 36rpx;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8rpx);
+  }
 }

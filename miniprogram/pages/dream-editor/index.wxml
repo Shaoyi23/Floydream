@@ -1,9 +1,10 @@
 <view class="editor">
   <view class="editor-card elevated-card">
     <view class="editor-header">
-      <view class="editor-icon">💭</view>
-      <view class="editor-title">梦里发生了什么？</view>
-      <view class="editor-desc">不用追求完整。哪怕只记得一个房间、一句对白、一种颜色，都值得被留下。</view>
+      <view class="editor-badge">晨间速记</view>
+      <view class="editor-icon">🌼</view>
+      <view class="editor-title">把这场梦轻轻写下来</view>
+      <view class="editor-desc">不需要完整复述。先抓住最鲜明的画面、人物和情绪，其他细节以后还可以慢慢补。</view>
     </view>
 
     <view class="field">
@@ -63,19 +64,16 @@
       />
     </view>
 
-    <view class="switch-field">
-      <view class="switch-text">
-        <view class="field-label">AI 解读</view>
-        <view class="switch-desc">调用 DeepSeek 模型解析梦境意象与情感</view>
-      </view>
-      <switch color="#a78bfa" checked="{{needInterpretation}}" bindchange="toggleInterpretation" />
+    <view class="tip-panel">
+      <view class="tip-title">记录小贴士</view>
+      <view class="tip-text">先写最难忘的一幕，再补醒来时的感受和两个关键词，这样以后回看会更清晰。</view>
     </view>
 
     <view class="submit-panel">
       <button class="btn-primary submit-btn" loading="{{isSubmitting}}" bindtap="submitDream">
-        {{isSubmitting ? '正在保存…' : '保存这场梦'}}
+        {{isSubmitting ? '正在收好…' : '收好这场梦'}}
       </button>
-      <view class="submit-hint">先把梦留住，解读可以慢一点到来。</view>
+      <view class="submit-hint">你记录下来的每个片段，都会慢慢变成自己的梦境地图。</view>
     </view>
   </view>
 </view>

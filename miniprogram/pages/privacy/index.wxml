@@ -1,34 +1,29 @@
 <view class="privacy">
   <view class="privacy-card elevated-card">
     <view class="privacy-hero">
-      <view class="privacy-icon">🔐</view>
+      <view class="privacy-icon">🍑</view>
       <view class="privacy-title">隐私说明</view>
-      <view class="privacy-desc">Floydream 仅处理你主动提交的梦境记录，用于保存与生成参考性解读。</view>
+      <view class="privacy-desc">Floydream 只处理你主动写下的梦境记录，用来保存和整理自己的梦境笔记。</view>
     </view>
 
     <view class="privacy-section">
       <view class="section-title">我们会处理哪些信息</view>
-      <view class="section-text">你主动输入的梦境标题、梦境内容、情绪、关键词标签，以及系统生成的 AI 解读结果。</view>
+      <view class="section-text">你主动输入的梦境标题、梦境内容、情绪和关键词标签。</view>
     </view>
 
     <view class="privacy-section">
       <view class="section-title">这些信息会被如何使用</view>
-      <view class="section-text">用于保存你的梦境记录、在不同设备间同步同一账号下的数据体验，以及生成梦境内容的参考性文本解读。</view>
+      <view class="section-text">用于保存你的梦境记录，并在需要时同步同一小程序账号下的记录内容，方便你后续回看和整理。</view>
     </view>
 
     <view class="privacy-section">
       <view class="section-title">信息会与谁共享</view>
-      <view class="section-text">梦境记录会通过云函数写入 Supabase 数据库进行存储；当你触发 AI 解读时，相关文本会通过云函数发送给 DeepSeek 模型接口完成分析。</view>
+      <view class="section-text">梦境记录会通过云函数写入云端数据库进行存储，用于保存你自己的记录内容。</view>
     </view>
 
     <view class="privacy-section">
       <view class="section-title">我们不会做什么</view>
-      <view class="section-text">不会在小程序前端存放 DeepSeek 或 Supabase 的高权限密钥；不会在未经你主动输入的情况下读取定位、通讯录、相册、手机号等微信隐私信息。</view>
-    </view>
-
-    <view class="privacy-section">
-      <view class="section-title">关于 AI 解读</view>
-      <view class="section-text">AI 解读仅供记录、整理与自我观察参考，不构成医疗、心理诊断或其他专业建议。如你处于情绪危机或需要专业帮助，请及时联系线下专业机构。</view>
+      <view class="section-text">不会在未经你主动输入的情况下读取定位、通讯录、相册、手机号等微信隐私信息，也不会要求你提供与记录梦境无关的个人信息。</view>
     </view>
 
     <view class="privacy-section">

@@ -2,21 +2,22 @@
   "pages": [
     "pages/dream-home/index",
     "pages/profile/index",
+    "pages/dream-list/index",
     "pages/dream-editor/index",
     "pages/dream-detail/index",
     "pages/privacy/index"
   ],
   "window": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Floydream",
-    "navigationBarBackgroundColor": "#4d466c",
-    "backgroundColor": "#4d466c"
+    "navigationBarBackgroundColor": "#ffe7d6",
+    "backgroundColor": "#ffe7d6"
   },
   "tabBar": {
-    "color": "#b3acd2",
-    "selectedColor": "#f5eeff",
+    "color": "#8f8aa7",
+    "selectedColor": "#ff7b6b",
     "borderStyle": "white",
-    "backgroundColor": "#2a2346",
+    "backgroundColor": "#fff9f2",
     "list": [
       {
         "pagePath": "pages/dream-home/index",

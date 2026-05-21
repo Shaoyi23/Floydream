@@ -1,15 +1,14 @@
 const {
   decorateDream,
   getDreamById,
-  upsertDream,
 } = require('../../utils/dreams')
-const { interpretDream } = require('../../utils/interpret')
 
 Page({
   data: {
     id: '',
     dream: null,
-    isRefreshing: false,
+    isLoading: true,
+    loadFailed: false,
   },
 
   onLoad(options) {
@@ -29,29 +28,25 @@ Page({
   },
 
   async loadDream() {
-    const dream = decorateDream(await getDreamById(this.data.id))
-    this.setData({ dream })
-  },
-
-  async refreshInterpretation() {
-    const dream = this.data.dream
-
-    if (!dream || this.data.isRefreshing) return
-
-    this.setData({ isRefreshing: true })
-    wx.showLoading({ title: '重新解读中', mask: true })
-
-    const analysis = await interpretDream(dream)
-    await upsertDream({
-      ...dream,
-      analysis,
-      analyzedAt: Date.now(),
-      status: 'done',
+    this.setData({
+      isLoading: true,
+      loadFailed: false,
     })
 
-    wx.hideLoading()
-    this.setData({ isRefreshing: false })
-    await this.loadDream()
+    try {
+      const dream = decorateDream(await getDreamById(this.data.id))
+      this.setData({
+        dream,
+        isLoading: false,
+        loadFailed: !dream,
+      })
+    } catch (_) {
+      this.setData({
+        dream: null,
+        isLoading: false,
+        loadFailed: true,
+      })
+    }
   },
 
   goCreate() {

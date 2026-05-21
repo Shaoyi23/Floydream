@@ -1,16 +1,15 @@
 .profile {
   min-height: 100vh;
-  padding: 0 28rpx 60rpx;
+  padding: 0 28rpx 72rpx;
   box-sizing: border-box;
 }
 
-/* === Hero === */
 .profile-hero {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 56rpx 20rpx 36rpx;
+  padding: 54rpx 20rpx 36rpx;
   text-align: center;
   overflow: hidden;
 }
@@ -23,32 +22,31 @@
   width: 400rpx;
   height: 400rpx;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, rgba(167, 139, 250, 0.04) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 195, 123, 0.24) 0%, rgba(255, 195, 123, 0.06) 42%, transparent 70%);
   pointer-events: none;
 }
 
 .avatar {
   font-size: 72rpx;
   margin-bottom: 20rpx;
-  filter: drop-shadow(0 0 24rpx rgba(167, 139, 250, 0.4));
+  filter: drop-shadow(0 10rpx 18rpx rgba(255, 160, 120, 0.22));
 }
 
 .profile-name {
   font-size: 36rpx;
   font-weight: 700;
-  color: #ffffff;
+  color: #45506f;
   letter-spacing: 2rpx;
 }
 
 .profile-desc {
   margin-top: 12rpx;
   font-size: 24rpx;
-  color: #7b73a8;
+  color: #7f84a1;
   line-height: 1.6;
   max-width: 440rpx;
 }
 
-/* === Stats === */
 .stats-row {
   display: flex;
   gap: 16rpx;
@@ -66,7 +64,7 @@
 .stat-num {
   font-size: 42rpx;
   font-weight: 700;
-  background: linear-gradient(135deg, #e0dfff, #c4b5fd);
+  background: linear-gradient(135deg, #ff8f6d, #4eb2ae);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -75,11 +73,10 @@
 .stat-label {
   margin-top: 6rpx;
   font-size: 20rpx;
-  color: #7b73a8;
+  color: #8b93ac;
   letter-spacing: 1rpx;
 }
 
-/* === Panel === */
 .panel {
   padding: 28rpx;
   margin-bottom: 20rpx;
@@ -88,18 +85,17 @@
 .panel-title {
   font-size: 28rpx;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #4b5575;
   margin-bottom: 18rpx;
   letter-spacing: 1rpx;
 }
 
 .panel-empty {
   font-size: 24rpx;
-  color: #6b6488;
+  color: #8e91a9;
   padding: 16rpx 0;
 }
 
-/* === Latest row === */
 .latest-row {
   display: flex;
   align-items: center;
@@ -113,22 +109,21 @@
 .latest-title {
   font-size: 28rpx;
   font-weight: 600;
-  color: #e0dfff;
+  color: #45506f;
   margin-bottom: 8rpx;
 }
 
 .latest-meta {
   font-size: 22rpx;
-  color: #6b6488;
+  color: #9297ad;
 }
 
 .latest-arrow {
   font-size: 28rpx;
-  color: #7b73a8;
+  color: #f08f6e;
   margin-left: 16rpx;
 }
 
-/* === Tips === */
 .tip-item {
   display: flex;
   margin-bottom: 16rpx;
@@ -141,7 +136,7 @@
 .tip-num {
   font-size: 22rpx;
   font-weight: 700;
-  color: #a78bfa;
+  color: #ff926e;
   margin-right: 14rpx;
   flex-shrink: 0;
   opacity: 0.6;
@@ -150,7 +145,7 @@
 .tip-text {
   font-size: 24rpx;
   line-height: 1.7;
-  color: #8b83b8;
+  color: #727694;
 }
 
 .service-row {
@@ -166,23 +161,23 @@
 .service-title {
   font-size: 28rpx;
   font-weight: 600;
-  color: #e0dfff;
+  color: #45506f;
 }
 
 .service-desc {
   margin-top: 8rpx;
   font-size: 22rpx;
   line-height: 1.6;
-  color: #8b83b8;
+  color: #7b80a0;
 }
 
 .service-note {
   margin-top: 20rpx;
   padding: 18rpx 20rpx;
   border-radius: 18rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1rpx solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 243, 230, 0.88);
+  border: 1rpx solid rgba(255, 223, 199, 0.88);
   font-size: 22rpx;
   line-height: 1.7;
-  color: #b9b1d7;
+  color: #8c775f;
 }

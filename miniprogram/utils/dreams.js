@@ -96,21 +96,25 @@ function formatRelativeDate(timestamp) {
 
 function decorateDream(dream) {
   if (!dream) return null
+  const tags = Array.isArray(dream.tags) ? dream.tags : []
   return {
     ...dream,
+    tags,
     createdAtText: formatDateTime(dream.createdAt),
     relativeText: formatRelativeDate(dream.createdAt),
     preview: (dream.content || '').replace(/\s+/g, ' ').slice(0, 66),
+    tagsText: tags.join('、'),
+    tagSummary: tags.length ? `🏷️ ${tags.length} 个关键词` : '💤 只记下了片段',
   }
 }
 
 function getStats(dreams) {
   const total = dreams.length
-  const interpreted = dreams.filter((d) => d.analysis).length
+  const tagged = dreams.filter((d) => Array.isArray(d.tags) && d.tags.length).length
   const dates = dreams
     .map((d) => new Date(d.createdAt).toDateString())
     .filter((v, i, list) => list.indexOf(v) === i)
-  return { total, interpreted, streak: dates.length }
+  return { total, tagged, streak: dates.length }
 }
 
 module.exports = {

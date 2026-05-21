@@ -1,0 +1,41 @@
+<view class="dream-list-page">
+  <view class="list-hero">
+    <view class="list-hero-badge">下拉可刷新</view>
+    <view class="list-title">{{pageTitle}}</view>
+    <view class="list-desc">{{pageDesc}}</view>
+  </view>
+
+  <view wx:if="{{isLoading}}" class="list-loading elevated-card">
+    <view class="list-loading-icon">🫧</view>
+    <view class="list-loading-title">正在整理梦境列表…</view>
+    <view class="list-loading-text">很快就好，马上带你回看这些片段。</view>
+  </view>
+
+  <view wx:elif="{{dreams.length}}" class="list-wrap">
+    <view
+      wx:for="{{dreams}}"
+      wx:key="id"
+      class="list-item elevated-card"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="list-item-head">
+        <view class="list-item-title">{{item.title || '未命名的梦'}}</view>
+        <view class="chip">{{item.mood}}</view>
+      </view>
+      <view class="list-item-meta">{{item.createdAtText}} · {{item.relativeText}}</view>
+      <view class="list-item-body">{{item.preview}}</view>
+      <view class="list-item-foot">
+        <view wx:if="{{item.tags.length}}" class="list-tag-text">关键词：{{item.tagsText}}</view>
+        <view wx:else class="list-tag-text dim">还没有补充关键词</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="list-empty elevated-card">
+    <view class="list-empty-icon">🌤️</view>
+    <view class="list-empty-title">这里还没有内容</view>
+    <view class="list-empty-text">先写下一场梦，列表就会慢慢丰富起来。</view>
+    <button class="btn-primary" bindtap="goCreate">去记录一场梦</button>
+  </view>
+</view>

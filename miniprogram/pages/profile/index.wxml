@@ -2,20 +2,19 @@
   <!-- Header -->
   <view class="profile-hero">
     <view class="profile-glow"></view>
-    <view class="avatar">✨</view>
+    <view class="avatar">🌷</view>
     <view class="profile-name">我的梦境档案</view>
-    <view class="profile-desc">每一次记录，都是在和自己的潜意识对话。</view>
+    <view class="profile-desc">把散落的片段慢慢收成一本只属于自己的清晨笔记。</view>
   </view>
 
-  <!-- Stats -->
   <view class="stats-row">
     <view class="stat-item glass-card">
       <view class="stat-num">{{stats.total}}</view>
       <view class="stat-label">累计记录</view>
     </view>
     <view class="stat-item glass-card">
-      <view class="stat-num">{{stats.interpreted}}</view>
-      <view class="stat-label">完成解读</view>
+      <view class="stat-num">{{stats.tagged}}</view>
+      <view class="stat-label">带关键词</view>
     </view>
     <view class="stat-item glass-card">
       <view class="stat-num">{{stats.streak}}</view>
@@ -23,7 +22,6 @@
     </view>
   </view>
 
-  <!-- Latest -->
   <view class="panel elevated-card">
     <view class="panel-title">最近一次记录</view>
     <view wx:if="{{latestDream}}" class="latest-row" bindtap="goLatestDream">
@@ -36,7 +34,6 @@
     <view wx:else class="panel-empty">还没有记录过梦境</view>
   </view>
 
-  <!-- Tips -->
   <view class="panel elevated-card">
     <view class="panel-title">记录贴士</view>
     <view class="tip-item">
@@ -58,12 +55,12 @@
     <view class="service-row" bindtap="goPrivacy">
       <view class="service-main">
         <view class="service-title">隐私说明</view>
-        <view class="service-desc">查看梦境记录、AI 解读与云端存储的数据使用方式</view>
+        <view class="service-desc">查看梦境记录与云端存储的数据使用方式</view>
       </view>
       <view class="latest-arrow">→</view>
     </view>
-    <view class="service-note">AI 解读仅供参考，不构成医疗、心理诊断或专业建议。</view>
+    <view class="service-note">这里只保留你主动写下的梦境内容、情绪和关键词，方便自己回看整理。</view>
   </view>
 
-  <button class="btn-primary" bindtap="goCreate">✦ 写一条新的梦境</button>
+  <button class="btn-primary" bindtap="goCreate">✦ 再写一条新的梦</button>
 </view>

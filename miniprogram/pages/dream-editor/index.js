@@ -3,7 +3,9 @@ const {
   parseTags,
   upsertDream,
 } = require('../../utils/dreams')
-const { interpretDream } = require('../../utils/interpret')
+
+// 审核版暂不启用 AI 解读，后续恢复时打开此开关并重新接回 interpretDream 流程。
+const AI_FEATURE_ENABLED = false
 
 const SAMPLE_DREAM = {
   title: '一直上不去的电梯',
@@ -18,7 +20,7 @@ Page({
     content: '',
     mood: '平静',
     tagsInput: '',
-    needInterpretation: true,
+    needInterpretation: AI_FEATURE_ENABLED,
     isSubmitting: false,
     moods: ['平静', '开心', '奇妙', '紧张', '害怕', '悲伤'],
   },
@@ -31,7 +33,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '来 Floydream 记下一段梦吧',
+      title: '来 Floydream 记下昨夜的梦吧',
       path: '/pages/dream-editor/index',
     }
   },
@@ -66,22 +68,14 @@ Page({
       content: content.trim(),
       mood,
       tags: parseTags(tagsInput),
-      status: needInterpretation ? 'analyzing' : 'draft',
+      status: AI_FEATURE_ENABLED && needInterpretation ? 'analyzing' : 'draft',
     })
 
     dream = await upsertDream(dream)
 
     try {
-      if (needInterpretation) {
-        wx.showLoading({ title: '正在解读梦境', mask: true })
-
-        const analysis = await interpretDream(dream)
-        dream = await upsertDream({
-          ...dream,
-          analysis,
-          analyzedAt: Date.now(),
-          status: 'done',
-        })
+      if (AI_FEATURE_ENABLED && needInterpretation) {
+        wx.showLoading({ title: '处理中', mask: true })
       }
 
       wx.hideLoading()
@@ -91,7 +85,7 @@ Page({
     } catch (error) {
       wx.hideLoading()
       await upsertDream({ ...dream, status: 'draft' })
-      wx.showToast({ title: '保存成功，解读稍后再试', icon: 'none' })
+      wx.showToast({ title: '保存成功，请稍后查看', icon: 'none' })
       wx.redirectTo({
         url: `/pages/dream-detail/index?id=${dream.id}`,
       })

@@ -1,6 +1,11 @@
 <view class="detail">
-  <view wx:if="{{dream}}" class="detail-wrap">
-    <!-- Dream content card -->
+  <view wx:if="{{isLoading}}" class="loading-card elevated-card">
+    <view class="loading-icon">🌤️</view>
+    <view class="loading-title">正在打开这场梦…</view>
+    <view class="loading-text">稍等一下，记录马上就会出现。</view>
+  </view>
+
+  <view wx:elif="{{dream}}" class="detail-wrap">
     <view class="dream-card elevated-card">
       <view class="dream-meta">
         <view class="chip chip-active">{{dream.mood}}</view>
@@ -13,59 +18,31 @@
       </view>
     </view>
 
-    <!-- AI Interpretation -->
-    <view class="analysis-card elevated-card">
-      <view class="analysis-head">
-        <view class="analysis-title">🔮 AI 梦境解读</view>
-        <view wx:if="{{dream.analysis}}" class="analysis-badge">已解读</view>
+    <view class="memory-card elevated-card">
+      <view class="memory-head">
+        <view class="memory-title">🌿 回看线索</view>
       </view>
-
-      <block wx:if="{{dream.analysis}}">
-        <view class="analysis-block">
-          <view class="block-label">整体感受</view>
-          <view class="block-text">{{dream.analysis.summary}}</view>
+      <view class="memory-grid">
+        <view class="memory-item">
+          <view class="memory-label">醒来感受</view>
+          <view class="memory-value">{{dream.mood}}</view>
         </view>
-
-        <view class="analysis-block" wx:if="{{dream.analysis.symbols && dream.analysis.symbols.length}}">
-          <view class="block-label">关键意象</view>
-          <view wx:for="{{dream.analysis.symbols}}" wx:key="name" class="symbol-item">
-            <view class="symbol-name">{{item.name}}</view>
-            <view class="symbol-desc">{{item.meaning}}</view>
-          </view>
+        <view class="memory-item">
+          <view class="memory-label">记录时间</view>
+          <view class="memory-value">{{dream.relativeText}}</view>
         </view>
-
-        <view class="analysis-block" wx:if="{{dream.analysis.insight}}">
-          <view class="block-label">心理映射</view>
-          <view class="block-text">{{dream.analysis.insight}}</view>
-        </view>
-
-        <view class="analysis-block" wx:if="{{dream.analysis.suggestion}}">
-          <view class="block-label">记录建议</view>
-          <view class="block-text">{{dream.analysis.suggestion}}</view>
-        </view>
-      </block>
-
-      <view wx:else class="analysis-empty">
-        <view class="empty-icon">💤</view>
-        <view class="block-text dim">这条梦境还未生成解读，点击下方按钮获取 AI 分析。</view>
       </view>
-
-      <view class="analysis-disclaimer">
-        <view class="disclaimer-title">提示</view>
-        <view class="disclaimer-text">AI 解读仅供记录与自我观察参考，不构成医疗、心理诊断或其他专业建议。</view>
+      <view class="memory-note">
+        <view class="memory-note-title">回看建议</view>
+        <view class="memory-note-text">下次想起这场梦时，可以补记一个场景、一个人物，或者醒来后的第一感受。</view>
       </view>
-
-      <button class="btn-ghost refresh-btn" loading="{{isRefreshing}}" bindtap="refreshInterpretation">
-        {{isRefreshing ? '解读中…' : '🔄 重新解读'}}
-      </button>
     </view>
 
     <button class="btn-primary" bindtap="goCreate">再记一条梦</button>
   </view>
 
-  <!-- Not found -->
-  <view wx:else class="missing-card elevated-card">
-    <view class="empty-icon">🌑</view>
+  <view wx:elif="{{loadFailed}}" class="missing-card elevated-card">
+    <view class="empty-icon">🌤️</view>
     <view class="block-title">未找到这条梦境</view>
     <view class="block-text dim">本地记录可能已被清理，或该链接无效。</view>
     <button class="btn-primary" bindtap="goCreate">去写新的梦</button>

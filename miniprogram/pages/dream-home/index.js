@@ -8,16 +8,21 @@ Page({
   data: {
     latestDream: null,
     recentDreams: [],
-    stats: { total: 0, interpreted: 0, streak: 0 },
+    stats: { total: 0, tagged: 0, streak: 0 },
   },
 
   async onShow() {
     await this.loadDreams()
   },
 
+  async onPullDownRefresh() {
+    await this.loadDreams()
+    wx.stopPullDownRefresh()
+  },
+
   onShareAppMessage() {
     return {
-      title: 'Floydream｜记录你的梦，获得一段温柔解读',
+      title: 'Floydream｜把昨夜的梦温柔收好',
       path: '/pages/dream-home/index',
     }
   },
@@ -42,6 +47,13 @@ Page({
     const { id } = event.currentTarget.dataset
     wx.navigateTo({
       url: `/pages/dream-detail/index?id=${id}`,
+    })
+  },
+
+  goList(event) {
+    const type = event.currentTarget.dataset.type || 'all'
+    wx.navigateTo({
+      url: `/pages/dream-list/index?type=${type}`,
     })
   },
 })
